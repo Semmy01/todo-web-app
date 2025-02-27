@@ -66,3 +66,13 @@ body {
   text-decoration: line-through;
   font-size: 18px;
 }
+.completed-signal {
+  background-color: rgb(138, 255, 138);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid greenyellow;
+}
+.completed:disabled {
+  background-color: grey;
+}

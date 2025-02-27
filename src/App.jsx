@@ -31,9 +31,9 @@ const Todo = () => {
    }
 
   const completedTask  = (id ) => {
-    const ciineiia = todosArray.find(item=> item.id ===id)
+    const matchID = todosArray.find((item)=> item.id ===id)
     const newTodo = {
-    ...ciineiia, status:"completed"
+    ...matchID, status:"completed"
    }
 
    const remainTodos = todosArray.filter((item)=> item.id !== id)
@@ -54,11 +54,11 @@ const Todo = () => {
             todosArray.map((todo) => {
                 return (
                 <div key={`${todo.id}`} className='display-todos' >
-                  <div className='completed-sign'></div>
+                  <div className={`${todo.status === 'completed'? "completed-signal" : "completed-sign" }`}></div>
                   <li className={`${todo.status === "completed" ? 'disable' : 'todos'}`}>{todo.title}</li>
                   <div>
                   <button className='del-btn' onClick={()=>deleteTodo(todo.id)} >Delete</button>
-                  <button className='completed' onClick={() => { completedTask(todo.id)}}>{todo.status === "completed" ? "Completed" :"Complete"}</button>
+                  <button disabled={todo.status === "completed"} className='completed' onClick={() => { completedTask(todo.id)}}>{todo.status === "completed" ? "Completed" :"Complete"}</button>
                   </div>
                 </div>
                 )
@@ -68,6 +68,7 @@ const Todo = () => {
       </div>
     </>
   )
+  
 }
 
 export default Todo
